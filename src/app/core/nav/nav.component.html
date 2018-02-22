@@ -1,14 +1,17 @@
 <mat-toolbar color="primary" fxLayout="row">
   <span>Projects</span>
-  <button mat-button [matMenuTriggerFor]="project" fxFlexOffset="5" [style.padding.px]="10">Projetos</button>
-  <mat-menu #project="matMenu">
-    <button mat-menu-item>Adicionar</button>
-    <button mat-menu-item>Ver todos</button>
-  </mat-menu>
-
-  <button mat-button [matMenuTriggerFor]="colaborators" fxFlexOffset="2" [style.padding.px]="10">Colaboradores</button>
-  <mat-menu #colaborators="matMenu">
-    <button mat-menu-item>Adicionar</button>
-    <button mat-menu-item>Ver todos</button>
-  </mat-menu>
+  <div fxLayout="row" fxFlex="25" id="buttons-nav" [style.padding.px]="4" fxLayoutAlign="center center">
+    <button mat-raised-button color="primary" [matMenuTriggerFor]="project" fxFlexOffset="0" [style.padding.px]="10">Projetos</button>
+    
+    <mat-menu #project="matMenu">
+      <button mat-menu-item>Adicionar</button>
+      <button mat-menu-item>Ver todos</button>
+    </mat-menu>
+    <button mat-raised-button color="primary" [matMenuTriggerFor]="colaborators" fxFlexOffset="10" [style.padding.px]="10">Colaboradores</button>
+    <mat-menu #colaborators="matMenu">
+      <button mat-menu-item>Adicionar</button>
+      <button mat-menu-item>Ver todos</button>
+    </mat-menu>
+  </div>
+ 
 </mat-toolbar>
