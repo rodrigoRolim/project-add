@@ -7,21 +7,26 @@ import { ColaboratorsModule } from './colaborators/colaborators.module';
 import { FooterComponent } from './footer/footer.component';
 import { AppRoutingModule } from './app-routing.module';
 import { PageNotFoundComponentComponent } from './page-not-found-component/page-not-found-component.component';
-
+import { MessagesComponent } from './messages/messages.component';
+import { MessageService } from './message.service';
+import { AuthGuardService } from './shared/auth-guard.service';
+import { ReactiveFormsModule } from '@angular/forms';
+import { HttpModule } from '@angular/http';
 @NgModule({
   declarations: [
     AppComponent,
     FooterComponent,
-    PageNotFoundComponentComponent
+    PageNotFoundComponentComponent,
+    MessagesComponent,
   ],
   imports: [
     BrowserModule,
     CoreModule,
     ProjectsModule,
     ColaboratorsModule,
-    AppRoutingModule,
+    AppRoutingModule
   ],
-  providers: [],
+  providers: [MessageService, AuthGuardService],
   bootstrap: [AppComponent],
   entryComponents: [AppComponent]
 })

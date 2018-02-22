@@ -4,24 +4,36 @@ import { RouterModule, Routes } from '@angular/router';
 import { ColaboratorComponent } from './colaborator/colaborator.component';
 import { ColaboratorMasterComponent } from './colaborator-master/colaborator-master.component';
 import { ColaboratorListComponent } from './colaborator-list/colaborator-list.component';
-const routes = [
+import { AuthGuardService } from '../shared/auth-guard.service';
+
+const routes: Routes = [
   {
     path: 'colaborators',
-    component: ColaboratorListComponent
+    children: [
+      {
+        path: '',
+        canActivate: [AuthGuardService],
+        component: ColaboratorListComponent
+      },
+      {
+        path: 'detail',
+        component: ColaboratorComponent,
+        canActivateChild: [AuthGuardService]
+      },
+      {
+        path: 'add',
+        component: ColaboratorMasterComponent,
+        canActivateChild: [AuthGuardService]
+      },
+      {
+        path: 'edit',
+        component: ColaboratorMasterComponent,
+        canActivateChild: [AuthGuardService]
+      }
+    ]
   },
-  {
-    path: 'colaborators/detail',
-    component: ColaboratorComponent
-  },
-  {
-    path: 'colaborators/add',
-    component: ColaboratorMasterComponent
-  },
-  {
-    path: 'colaborator/edit',
-    component: ColaboratorMasterComponent
-  }
-]
+];
+
 @NgModule({
   exports: [ RouterModule ],
   imports: [
@@ -29,4 +41,5 @@ const routes = [
   ],
   declarations: []
 })
+
 export class ColaboratorsRoutingModule { }
