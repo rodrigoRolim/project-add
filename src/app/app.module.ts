@@ -13,12 +13,14 @@ import { AuthGuardService } from './shared/auth-guard.service';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
+import { HttpErrorHandlerService } from './http-error-handler.service';
+
 @NgModule({
   declarations: [
     AppComponent,
     FooterComponent,
     PageNotFoundComponentComponent,
-    MessagesComponent,
+    MessagesComponent
   ],
   imports: [
     BrowserModule,
@@ -28,7 +30,7 @@ import { HttpClientModule } from '@angular/common/http';
     AppRoutingModule,
     HttpClientModule
   ],
-  providers: [MessageService, AuthGuardService],
+  providers: [MessageService, AuthGuardService, HttpErrorHandlerService],
   bootstrap: [AppComponent],
   entryComponents: [AppComponent]
 })

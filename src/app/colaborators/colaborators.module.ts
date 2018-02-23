@@ -8,6 +8,7 @@ import { ColaboratorsRoutingModule } from './colaborators-routing.module';
 import { MaterialModule } from '../util/material.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
+import { ColaboratorService } from './shared/colaborator.service';
 @NgModule({
   imports: [
     CommonModule,
@@ -20,8 +21,9 @@ import { HttpModule } from '@angular/http';
     ColaboratorComponent,
     ColaboratorMasterComponent,
     ColaboratorListComponent,
-    ColaboratorsRoutingModule
+    ColaboratorsRoutingModule,
   ],
+  providers: [ColaboratorService],
   declarations: [
     ColaboratorComponent,
     ColaboratorMasterComponent,
