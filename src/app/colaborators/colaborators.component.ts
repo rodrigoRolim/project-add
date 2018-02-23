@@ -6,10 +6,7 @@ import { Component, OnInit } from '@angular/core';
     styleUrls: ['./colaborators.component.css']
 })
 export class ColaboratorsComponent implements OnInit {
-    
     constructor() { }
     ngOnInit(): void {
-        throw new Error("Method not implemented.");
     }
-
 }

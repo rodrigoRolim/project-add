@@ -4,24 +4,36 @@ import { ProjectComponent } from './project/project.component';
 import { RouterModule, Routes } from '@angular/router';
 import { ProjectListComponent } from './project-list/project-list.component';
 import { ProjectMasterComponent } from './project-master/project-master.component';
-const routes = [
+import { AuthGuardService } from '../shared/auth-guard.service';
+
+const routes: Routes = [
   {
     path: 'projects',
-    component: ProjectListComponent
-  },
-  {
-    path: 'projects/detail',
-    component: ProjectComponent
-  },
-  {
-    path: 'projects/add',
-    component: ProjectMasterComponent
-  },
-  {
-    path: 'projects/edit',
-    component: ProjectMasterComponent
+    children: [
+      {
+        path: '',
+        canActivate: [AuthGuardService],
+        component: ProjectListComponent
+      },
+      {
+        path: 'detail',
+        component: ProjectComponent,
+        canActivateChild: [AuthGuardService]
+      },
+      {
+        path: 'add',
+        component: ProjectMasterComponent,
+        canActivateChild: [AuthGuardService]
+      },
+      {
+        path: 'edit',
+        component: ProjectMasterComponent,
+        canActivateChild: [AuthGuardService]
+      }
+    ]
   }
 ];
+
 @NgModule({
   exports: [ RouterModule ],
   imports: [
@@ -29,4 +41,5 @@ const routes = [
   ],
   declarations: []
 })
+
 export class ProjectsRoutingModule { }
