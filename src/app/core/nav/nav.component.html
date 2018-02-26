@@ -1,17 +1,95 @@
-<mat-toolbar color="primary" fxLayout="row">
-  <span>Projects</span>
-  <div fxLayout="row" fxFlex="25" id="buttons-nav" [style.padding.px]="4" fxLayoutAlign="center center">
-    <button mat-raised-button color="primary" [matMenuTriggerFor]="project" fxFlexOffset="0" [style.padding.px]="10">Projetos</button>
-    
-    <mat-menu #project="matMenu">
-      <button mat-menu-item>Adicionar</button>
-      <button mat-menu-item>Ver todos</button>
-    </mat-menu>
-    <button mat-raised-button color="primary" [matMenuTriggerFor]="colaborators" fxFlexOffset="10" [style.padding.px]="10">Colaboradores</button>
-    <mat-menu #colaborators="matMenu">
-      <button mat-menu-item>Adicionar</button>
-      <button mat-menu-item>Ver todos</button>
-    </mat-menu>
-  </div>
- 
+<mat-toolbar color="primary" role="header">
+  <mat-toolbar-row fxLayout="row">
+      <span>Projects</span>
+      <span fxFlexOffset="2">
+        <button mat-button [style.lineHeight.px]="56">
+          <mat-icon>
+            home
+          </mat-icon>
+          <span [style.padding.px]="0">
+            home
+          </span>
+        </button>
+      </span>
+      <div fxFlexLayout="row" fxHide.xs fxShow.gt-xs>
+        <div fxLayout="row" fxFlex="50%">
+          <button mat-button color="basic" [matMenuTriggerFor]="project" [style.lineHeight.px]="56">
+            <mat-icon>
+              work
+            </mat-icon>
+            <span [style.padding.px]="0">
+               projetos
+            </span>
+          </button>
+          <mat-menu #project="matMenu">
+            <button mat-menu-item>Adicionar</button>
+            <button mat-menu-item>Ver todos</button>
+          </mat-menu>
+        </div>
+        <div  fxLayout="row" fxFlex="55%">
+          <button mat-button color="basic" [matMenuTriggerFor]="colaborators" [style.lineHeight.px]="56">
+            <mat-icon> 
+              people
+            </mat-icon>
+            <span [style.padding.px]="0">
+              colaboradores
+            </span>
+          </button>
+          <mat-menu #colaborators="matMenu">
+            <button mat-menu-item>Adicionar</button>
+            <button mat-menu-item>Ver todos</button>
+          </mat-menu>
+        </div>
+      </div>
+  </mat-toolbar-row>
+  <mat-toolbar-row fxShow.xs fxHide.gt-xs >
+      <div fxShow.xs fxHide.gt-xs fxLayout="row">
+          <div>
+            <button mat-button color="basic" [matMenuTriggerFor]="project" [style.lineHeight.px]="56">
+              <mat-icon>
+                  work
+              </mat-icon>
+              <span [style.padding.px]="0">
+                projetos
+              </span>
+            </button>
+            <mat-menu #project="matMenu">
+              <button mat-menu-item>Adicionar</button>
+              <button mat-menu-item>Ver todos</button>
+            </mat-menu>
+          </div>
+          <div>
+            <button mat-button color="basic" [matMenuTriggerFor]="colaborators" [style.lineHeight.px]="56">
+              <mat-icon> 
+                people
+              </mat-icon>
+              <span [style.padding.px]="0">
+                colaboradores
+              </span>
+            </button>
+            <mat-menu #colaborators="matMenu">
+              <button mat-menu-item>Adicionar</button>
+              <button mat-menu-item>Ver todos</button>
+            </mat-menu>
+          </div>
+        </div>
+  </mat-toolbar-row>
 </mat-toolbar>
+<!-- <mat-toolbar color="primary">
+    <mat-toolbar-row>
+      <span>Custom Toolbar</span>
+    </mat-toolbar-row>
+  
+    <mat-toolbar-row>
+      <span>Second Line</span>
+      <span class="example-spacer"></span>
+      <mat-icon class="example-icon">verified_user</mat-icon>
+    </mat-toolbar-row>
+  
+    <mat-toolbar-row>
+      <span>Third Line</span>
+      <span class="example-spacer"></span>
+      <mat-icon class="example-icon">favorite</mat-icon>
+      <mat-icon class="example-icon">delete</mat-icon>
+    </mat-toolbar-row>
+  </mat-toolbar> -->

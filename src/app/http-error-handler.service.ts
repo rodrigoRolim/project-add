@@ -1,10 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpErrorResponse } from '@angular/common/http';
 
+import { MessageService } from './message.service';
 import { Observable } from 'rxjs/Observable';
 import { of } from 'rxjs/observable/of';
-
-import { MessageService } from './message.service';
 
 /** Type of the handleError function returned by HttpErrorHandler.createHandleError */
 export type HandleError =

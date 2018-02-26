@@ -1,10 +1,11 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ProjectComponent } from './project/project.component';
+import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+
+import { AuthGuardService } from '../shared/auth-guard.service';
+import { ProjectComponent } from './project/project.component';
 import { ProjectListComponent } from './project-list/project-list.component';
 import { ProjectMasterComponent } from './project-master/project-master.component';
-import { AuthGuardService } from '../shared/auth-guard.service';
 
 const routes: Routes = [
   {

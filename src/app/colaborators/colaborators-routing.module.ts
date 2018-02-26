@@ -1,10 +1,11 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
+
+import { AuthGuardService } from '../shared/auth-guard.service';
 import { ColaboratorComponent } from './colaborator/colaborator.component';
 import { ColaboratorMasterComponent } from './colaborator-master/colaborator-master.component';
 import { ColaboratorListComponent } from './colaborator-list/colaborator-list.component';
-import { AuthGuardService } from '../shared/auth-guard.service';
 
 const routes: Routes = [
   {

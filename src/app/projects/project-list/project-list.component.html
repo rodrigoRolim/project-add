@@ -1,3 +1,14 @@
-<p>
-  project-list works!
-</p>
+<ul>
+  <li *ngFor="let project of projects; index as i">
+    <ul>
+      <li>{{ project.team[i].member }}</li>
+      <li>{{ project.team[i].timeSpend }}</li>
+      <li>{{ project.name }}</li>
+      <li>{{ project._id }}</li>
+      <li>{{ project.boss }}</li>
+      <li>{{ project.start }}</li>
+      <li>{{ project.finish}}</li>
+      <li>{{ project.description }}</li>
+    </ul>
+  </li>
+</ul>

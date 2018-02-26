@@ -1,8 +1,31 @@
-<div class="example-container">
-  <form [formGroup]="form" (ngSubmit)="onSubmit()">
-    <mat-form-field>
-      <input matInput placeholder="nome" formControlName="name" required>
+<div class="example-container" fxLayout="column" fxLayoutAlign="center center" fxLayoutWarp>
+  <form [formGroup]="colaboratorForm" #fm="ngForm" novalidate (ngSubmit)="onSubmit()" fxLayout="row"
+  fxLayoutAlign="center center" fxLayoutWrap fxFlex="100" fxFlexOffset.xs="20" fxFlexOffset="10"
+  [ngStyle.gt-xs]="{'padding.px': 20}">
+    <mat-form-field fxFlex="48" fxFlex.xs="90">
+      <input  matInput placeholder="nome" formControlName="name" required>
     </mat-form-field>
-    <button type="submit">Send</button>
+    <mat-form-field fxFlex="48" fxFlexOffset="4" fxFlexOffset.xs="0" fxFlex.xs="90">
+        <input  matInput placeholder="email" formControlName="email" required>
+      </mat-form-field>
+    <mat-form-field fxFlex="48" fxFlex.xs="90">
+      <input  matInput placeholder="phone" formControlName="phone" required>
+    </mat-form-field>
+    <mat-form-field fxFlex="48" fxFlex.xs="90" fxFlexOffset="4" fxFlexOffset.xs="0">
+      <input  matInput placeholder="birth" formControlName="birth" required>
+    </mat-form-field>
+    <mat-form-field fxFlex="48" fxFlex.xs="90">
+      <input  matInput placeholder="workload" formControlName="workload" required>
+    </mat-form-field>
+    <mat-form-field fxFlex="48" fxFlex.xs="90" fxFlexOffset="4" fxFlexOffset.xs="0">
+      <input  matInput placeholder="scholarity" formControlName="scholarity" required>
+    </mat-form-field>
+    <span fxFlexOffset="50" [ngStyle.xs]="{'margin-bottom.px': 50, 'margin-top.px': 25}">
+      <button mat-raised-button type="submit" [disabled]="!fm.form.valid" color="primary"
+      [ngStyle.xs]="{'padding-left.px': 35, 'padding-right.px': 35, 
+      'padding-top.px': 8, 'padding-bottom.px': 8}">
+        Save
+      </button>
+    </span>
   </form>
 </div>

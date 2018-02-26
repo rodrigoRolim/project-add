@@ -1,9 +1,9 @@
 export class Colaborator {
-    public id?: string;
+    public _id?: string;
     public name?: string;
     public email?: string;
     public phone?: string;
-    public birthday?: Date;
+    public birth?: Date;
     public workload?: number;
-    public schooling?: string;
+    public scholarity?: string;
 }
