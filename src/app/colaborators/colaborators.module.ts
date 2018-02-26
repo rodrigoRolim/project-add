@@ -18,18 +18,18 @@ import { MaterialModule } from '../util/material.module';
     ColaboratorsRoutingModule,
     MaterialModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
   ],
   exports: [
     ColaboratorComponent,
     ColaboratorMasterComponent,
-    ColaboratorListComponent
+    ColaboratorListComponent,
   ],
   providers: [ColaboratorService],
   declarations: [
     ColaboratorComponent,
     ColaboratorMasterComponent,
-    ColaboratorListComponent
+    ColaboratorListComponent,
   ]
 })
 

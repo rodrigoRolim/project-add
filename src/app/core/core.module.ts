@@ -5,6 +5,7 @@ import { NgModule } from '@angular/core';
 import { CoreComponent } from './core.component';
 import { NavComponent } from './nav/nav.component';
 import { MaterialModule } from '../util/material.module';
+import { CoreRoutingModule } from './/core-routing.module';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import { MaterialModule } from '../util/material.module';
     CommonModule,
     FlexLayoutModule,
     MaterialModule,
+    CoreRoutingModule,
   ],
   exports: [
     NavComponent,

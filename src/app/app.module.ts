@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AuthGuardService } from './shared/auth-guard.service';
 import { AppComponent } from './app.component';
@@ -14,13 +15,16 @@ import { AppRoutingModule } from './app-routing.module';
 import { MessagesComponent } from './messages/messages.component';
 import { MessageService } from './message.service';
 import { PageNotFoundComponentComponent } from './page-not-found-component/page-not-found-component.component';
+import { NumberDirective } from './number.directive';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     FooterComponent,
     PageNotFoundComponentComponent,
-    MessagesComponent
+    MessagesComponent,
+    NumberDirective,
   ],
   imports: [
     BrowserModule,
@@ -28,7 +32,9 @@ import { PageNotFoundComponentComponent } from './page-not-found-component/page-
     ProjectsModule,
     ColaboratorsModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [MessageService, AuthGuardService, HttpErrorHandlerService],
   bootstrap: [AppComponent],
