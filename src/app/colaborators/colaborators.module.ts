@@ -10,6 +10,7 @@ import { ColaboratorMasterComponent } from './colaborator-master/colaborator-mas
 import { ColaboratorListComponent } from './colaborator-list/colaborator-list.component';
 import { ColaboratorsRoutingModule } from './colaborators-routing.module';
 import { MaterialModule } from '../util/material.module';
+import { NumberDirective } from '../number.directive';
 
 @NgModule({
   imports: [
@@ -18,18 +19,19 @@ import { MaterialModule } from '../util/material.module';
     ColaboratorsRoutingModule,
     MaterialModule,
     ReactiveFormsModule,
-    FormsModule,
+    FormsModule
   ],
   exports: [
     ColaboratorComponent,
     ColaboratorMasterComponent,
-    ColaboratorListComponent,
+    ColaboratorListComponent
   ],
   providers: [ColaboratorService],
   declarations: [
     ColaboratorComponent,
     ColaboratorMasterComponent,
     ColaboratorListComponent,
+    NumberDirective
   ]
 })
 

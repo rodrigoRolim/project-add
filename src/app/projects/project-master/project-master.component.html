@@ -1,3 +1,48 @@
-<p>
-  project-add works!
-</p>
+<!-- <ul>
+  <li *ngFor="let colaborator of collaborators">{{colaborator.email}}</li>
+</ul> -->
+
+<div>
+  <form #form="ngForm" fxLayout="row" fxLayoutWrap fxLayoutAlign="center center"
+  [ngStyle.gt-xs]="{'padding.px': 100}" [formGroup]="projectForm" novalidate
+  >
+    <mat-form-field fxFlex="90">
+      <input matInput placeholder="nome" formControlName="name" required>
+    </mat-form-field>
+    <mat-form-field fxFlex="90">
+      <textarea matInput placeholder="description" formControlName="description" required></textarea>
+    </mat-form-field>
+    <mat-form-field fxFlex="43">
+      <input matInput [matDatepicker]="dateBegin" [matDatepickerFilter]="myFilter" 
+      placeholder="data de início" formControlName="start"
+       disabled required>
+      <mat-datepicker-toggle matSuffix [for]="dateBegin"></mat-datepicker-toggle>
+      <mat-datepicker #dateBegin  disabled="false"></mat-datepicker>
+    </mat-form-field>
+    <mat-form-field fxFlex="43" fxFlexOffset="4">
+      <input matInput [matDatepicker]="dateEnd" [matDatepickerFilter]="myFilter"
+       placeholder="data de conclusão" formControlName="end"
+       disabled required>
+      <mat-datepicker-toggle matSuffix [for]="dateEnd"></mat-datepicker-toggle>
+      <mat-datepicker #dateEnd disabled="false"></mat-datepicker>
+    </mat-form-field>
+    <mat-form-field fxFlex="43">
+        <mat-select placeholder="responsável" formControlName="collaborator">
+          <mat-option *ngFor="let collaborator of collaborators" [value]="collaborator._id">
+            {{collaborator.name}}
+          </mat-option>
+        </mat-select>
+    </mat-form-field>
+    <mat-form-field fxFlex="43"  fxFlexOffset="4">
+      <mat-select placeholder="equipe" [formControl]="teans" multiple>
+        <mat-select-trigger>
+          {{teans.value ? teans.value[0] : ''}}
+          <span *ngIf="teans.value?.length > 1">
+            (+{{teans.value.length - 1}} others)
+          </span>
+        </mat-select-trigger>
+        <mat-option *ngFor="let team of teamList" [value]="team">{{team}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </form>
+</div>

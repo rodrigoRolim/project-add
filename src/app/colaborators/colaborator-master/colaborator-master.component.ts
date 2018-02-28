@@ -1,11 +1,19 @@
 import { Component, OnInit, OnChanges, Directive, ElementRef, HostListener } from '@angular/core';
-import { FormBuilder, FormGroup, RequiredValidator, Validators } from '@angular/forms';
+import {
+  FormBuilder,
+  FormGroup,
+  RequiredValidator,
+  Validators,
+  FormControl,
+  FormGroupDirective,
+  NgForm
+  } from '@angular/forms';
 import { NgModel } from '@angular/forms';
+import { ErrorStateMatcher } from '@angular/material/core';
 
 import { Colaborator } from '../shared/colaborator';
 import { ColaboratorService } from '../shared/colaborator.service';
 import { Observable } from 'rxjs/Observable';
-
 
 @Component({
   selector: 'app-colaborator-master',
@@ -29,19 +37,31 @@ export class ColaboratorMasterComponent implements OnInit {
       email: ['', Validators.required],
       phone: [''],
       birth: [''],
-      workload: ['', Validators.required],
+      workload: [this.load, Validators.required],
       scholarity: ['']
     });
+    console.log(this.load);
   }
   ngOnInit() {
+   console.log(this.colaboratorForm);
   }
-  inputChange(event) {
-    console.log(event.key);
-    if (event.key.match(/[^\d]+|^[0]+/ig)) {
-      event.preventDefault();
-      console.log(this.load);
-      this.load = this.load.replace(/[^\d]+|^[0]+/ig, '');
-    }
+  inputChange(n): void {
+    this.load = n.value;
+    // console.log(event.key);
+    // if (event.key.match(/[^\d]+|^[0]+/ig)) {
+    //   event.preventDefault();
+    //   console.log(this.load);
+    //   this.load = this.load.replace(/[^\d]+|^[0]+/ig, '');
+    // }
+  }
+  // getEmail(email: any): void {
+  //   console.log(this.colaboratorForm.controls.email.hasError('required'));
+  //   console.log(this.colaboratorForm.controls.email.value);
+  //   /[a-z\d]+(\@)[a-z\d]+/.test(this.colaboratorForm.controls.email.value);
+  // }
+  getErrorMessage() {
+    return this.colaboratorForm.controls.email.hasError('required') ? 'Email é obrigatório' :
+    (/[a-z\d]+[\@][a-z\d]+/g.test(this.colaboratorForm.controls.email.value)) ? 'email inválido' : '';
   }
   onSubmit(): void {
     this.colaborator = this.colaboratorForm.value;

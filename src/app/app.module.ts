@@ -15,16 +15,13 @@ import { AppRoutingModule } from './app-routing.module';
 import { MessagesComponent } from './messages/messages.component';
 import { MessageService } from './message.service';
 import { PageNotFoundComponentComponent } from './page-not-found-component/page-not-found-component.component';
-import { NumberDirective } from './number.directive';
-
 
 @NgModule({
   declarations: [
     AppComponent,
     FooterComponent,
     PageNotFoundComponentComponent,
-    MessagesComponent,
-    NumberDirective,
+    MessagesComponent
   ],
   imports: [
     BrowserModule,

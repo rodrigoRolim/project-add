@@ -1,12 +1,16 @@
 <div class="example-container" fxLayout="column" fxLayoutAlign="center center" fxLayoutWarp>
-  <form [formGroup]="colaboratorForm" novalidate (ngSubmit)="onSubmit()" fxLayout="row"
+  <form [formGroup]="colaboratorForm"  (ngSubmit)="onSubmit()" fxLayout="row"
   fxLayoutAlign="center center" fxLayoutWrap fxFlex="100" fxFlexOffset.xs="20" fxFlexOffset="2"
   [ngStyle.gt-xs]="{'padding.px': 20}">
     <mat-form-field fxFlex="48" fxFlex.xs="90">
       <input  matInput placeholder="nome" formControlName="name" required>
     </mat-form-field>
     <mat-form-field fxFlex="48" fxFlexOffset="4" fxFlexOffset.xs="0" fxFlex.xs="90">
-      <input  matInput placeholder="email" formControlName="email" required>
+      <input  #isMail matInput placeholder="email" formControlName="email"
+      required>
+      <mat-error>
+       {{getErrorMessage()}}
+      </mat-error>
     </mat-form-field>
     <mat-form-field fxFlex="48" fxFlex.xs="90">
       <input  matInput placeholder="phone" formControlName="phone">
@@ -17,11 +21,9 @@
       <mat-datepicker #picker startView="year" [startAt]="startDate"></mat-datepicker>
     </mat-form-field>
     <mat-form-field fxFlex="48" fxFlex.xs="90">
-      <input matInput placeholder="workload" formControlName="workload"
-      [(ngModel)]="load"
-      (keyup)="inputChange($event)"
-      numberInterger
-      required>
+      <input matInput #valor placeholder="workload" [(ngModel)]="load" formControlName="workload" 
+      (keyup)="inputChange(valor)"
+      numberInteger required>
     </mat-form-field>
     <mat-form-field fxFlex="48" fxFlex.xs="90" fxFlexOffset="4" fxFlexOffset.xs="0">
       <input  matInput placeholder="scholarity" formControlName="scholarity">

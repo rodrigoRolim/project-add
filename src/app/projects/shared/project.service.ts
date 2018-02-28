@@ -6,6 +6,7 @@ import { Observable } from 'rxjs/Observable';
 import { HttpErrorHandlerService } from '../../http-error-handler.service';
 import { MessageService } from '../../message.service';
 import { Project } from './project';
+import { Colaborator } from '../../colaborators/shared/colaborator';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -20,6 +21,13 @@ export class ProjectService {
     private http: HttpClient,
     private handleError: HttpErrorHandlerService
   ) { }
+  getColaborators(): Observable<Colaborator[]> {
+    return this.http.get<Colaborator[]>('http://localhost:3000/v1/users', httpOptions)
+    .pipe(
+      retry(3),
+      catchError(this.handleError.handleError<Colaborator[]>('getColaborators'))
+    );
+  }
   getProjects(): Observable<Project[]> {
     return this.http.get<Project[]>(this.projectsUrl, httpOptions)
     .pipe(
