@@ -5,6 +5,7 @@
 <div>
   <form #form="ngForm" fxLayout="row" fxLayoutWrap fxLayoutAlign="center center"
   [ngStyle.gt-xs]="{'padding.px': 100}" [formGroup]="projectForm" novalidate
+  (ngSubmit)="onSubmit()"
   >
     <mat-form-field fxFlex="90">
       <input matInput placeholder="nome" formControlName="name" required>
@@ -13,36 +14,69 @@
       <textarea matInput placeholder="description" formControlName="description" required></textarea>
     </mat-form-field>
     <mat-form-field fxFlex="43">
-      <input matInput [matDatepicker]="dateBegin" [matDatepickerFilter]="myFilter" 
-      placeholder="data de início" formControlName="start"
-       disabled required>
+      <input matInput [matDatepicker]="dateBegin" [matDatepickerFilter]="myFilterStart" 
+      placeholder="data de início" [formControl]="start" 
+      [max]="end.value"
+      required>
       <mat-datepicker-toggle matSuffix [for]="dateBegin"></mat-datepicker-toggle>
-      <mat-datepicker #dateBegin  disabled="false"></mat-datepicker>
+      <mat-datepicker #dateBegin disabled="false"></mat-datepicker>
     </mat-form-field>
     <mat-form-field fxFlex="43" fxFlexOffset="4">
-      <input matInput [matDatepicker]="dateEnd" [matDatepickerFilter]="myFilter"
-       placeholder="data de conclusão" formControlName="end"
-       disabled required>
+      <input matInput [matDatepicker]="dateEnd" [matDatepickerFilter]="myFilterEnd"
+       placeholder="data de conclusão" [formControl]="end"
+       [min]="start.value" 
+       required>
       <mat-datepicker-toggle matSuffix [for]="dateEnd"></mat-datepicker-toggle>
-      <mat-datepicker #dateEnd disabled="false"></mat-datepicker>
+      <mat-datepicker #dateEnd [disabled]="start.value === ''"></mat-datepicker>
     </mat-form-field>
     <mat-form-field fxFlex="43">
         <mat-select placeholder="responsável" formControlName="collaborator">
-          <mat-option *ngFor="let collaborator of collaborators" [value]="collaborator._id">
+          <mat-option *ngFor="let collaborator of collaborators" [value]="collaborator.name">
             {{collaborator.name}}
           </mat-option>
         </mat-select>
     </mat-form-field>
     <mat-form-field fxFlex="43"  fxFlexOffset="4">
-      <mat-select placeholder="equipe" [formControl]="teans" multiple>
+      <mat-select placeholder="equipe" [formControl]="teams" [(value)]="selected" multiple>
         <mat-select-trigger>
-          {{teans.value ? teans.value[0] : ''}}
-          <span *ngIf="teans.value?.length > 1">
-            (+{{teans.value.length - 1}} others)
+          {{teams.value ? teams.value[0] : ''}}
+          <span *ngIf="teams.value?.length > 1">
+            (+{{teams.value.length - 1}} others)
           </span>
         </mat-select-trigger>
-        <mat-option *ngFor="let team of teamList" [value]="team">{{team}}</mat-option>
+        <mat-option *ngFor="let team of teamList" [value]="team.name">{{team.name}}</mat-option>
       </mat-select>
     </mat-form-field>
+    <!-- <ul *ngIf="selected">
+      <li *ngFor="let s of selected">{{s}}</li>
+    </ul> -->
+    <div fxFlex="100">
+        <!-- <mat-table #table>
+          <ng-container matColumnDef="porra">
+            <mat-header-cell *matHeaderCell>porra</mat-header-cell>
+            <mat-cell *matCellDef="">caralho</mat-cell>
+          </ng-container>
+          <ng-container matColumnDef="porra2">
+              <mat-header-cell *matHeaderCell>porra</mat-header-cell>
+              <mat-cell *matCellDef="">caralho</mat-cell>
+          </ng-container>
+          <ng-container matColumnDef="porra3">
+              <mat-header-cell *matHeaderCell>porra</mat-header-cell>
+              <mat-cell *matCellDef="">caralho</mat-cell>
+          </ng-container>
+        </mat-table> -->
+        <mat-nav-list *ngIf="selected"  fxFlex="100" [style.padding.px]="50">
+          <mat-list-item *ngFor="let s of selected" fxLayout="column">
+            <p fxFlexAling="start" fxFlex="100">{{s}}</p>
+            <mat-form-field fxFlex="15" fxFlexAlign="end" [floatLabel]="'never'">
+              <input matInput placeholder="horas" #box (blur)="getHora(box.value, s)">
+            </mat-form-field>
+            <mat-divider></mat-divider>
+          </mat-list-item>
+        </mat-nav-list>
+      </div>
+    <div class="button" fxFlexOffset="80" [style.marginTop.px]="45">
+        <button type="submit" mat-button>save</button>
+    </div>
   </form>
 </div>
