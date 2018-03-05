@@ -10,6 +10,9 @@ import {
   } from '@angular/forms';
 import { NgModel } from '@angular/forms';
 import { ErrorStateMatcher } from '@angular/material/core';
+import { ActivatedRoute } from '@angular/router';
+import { Location } from '@angular/common';
+import { Router, ParamMap } from '@angular/router';
 
 import { Colaborator } from '../shared/colaborator';
 import { ColaboratorService } from '../shared/colaborator.service';
@@ -27,7 +30,9 @@ export class ColaboratorMasterComponent implements OnInit {
   load: string;
   constructor(
     private colaboratorService: ColaboratorService,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private location: Location,
+    private router: Router
   ) {
     this.createForm();
   }
@@ -69,6 +74,12 @@ export class ColaboratorMasterComponent implements OnInit {
     this.save(this.colaborator);
   }
   private save(colaborator: Colaborator): void {
-    this.colaboratorService.addColaborator(colaborator).subscribe(() => {console.log('cadastrdo'); });
+    this.colaboratorService.addColaborator(colaborator).subscribe(() => { this.gotoColaborator(); });
+  }
+  gotoColaborator(): void {
+    this.router.navigate(['/colaborators']);
+  }
+  goBack(): void {
+    this.location.back();
   }
 }

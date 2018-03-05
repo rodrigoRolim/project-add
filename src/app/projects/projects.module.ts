@@ -10,13 +10,14 @@ import { ProjectsComponent } from './projects.component';
 import { ProjectsRoutingModule } from './projects-routing.module';
 import { ProjectService } from './shared/project.service';
 import { MaterialModule } from '../util/material.module';
+import { ProjectMasterModule } from './project-master/project-master.module';
 
 @NgModule({
   declarations: [
     ProjectComponent,
     ProjectListComponent,
     ProjectMasterComponent,
-    ProjectsComponent
+    ProjectsComponent,
   ],
   imports: [
     CommonModule,
@@ -24,7 +25,8 @@ import { MaterialModule } from '../util/material.module';
     FormsModule,
     ReactiveFormsModule,
     MaterialModule,
-    ProjectsRoutingModule
+    ProjectsRoutingModule,
+    ProjectMasterModule
   ],
   providers: [ProjectService],
   exports: [

@@ -1,0 +1,15 @@
+<div fxFlex="100">
+  <mat-list *ngIf="projeto"  fxFlex="100" [style.padding.px]="50">
+    <mat-list-item *ngFor="let team of projeto.value.teams, index as i" fxLayout="column">
+      <p fxFlexAling="start" fxFlex="100">{{team.member}}</p>
+      <mat-form-field fxFlex="10" fxFlexAlign="end" [floatLabel]="'never'" fxFlexOffset="50">
+        <input type="number" matInput placeholder="horas" 
+        [(ngModel)]="projeto.value.teams[i].timeSpend" 
+        name="member-{{i}}" max="team.timeSpend" #box required>
+      </mat-form-field>
+      <span fxFlexOffset="5"><mat-icon>alarm</mat-icon></span>
+      <mat-divider></mat-divider>
+    </mat-list-item>
+  </mat-list>
+</div>
+

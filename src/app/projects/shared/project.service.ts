@@ -66,4 +66,11 @@ export class ProjectService {
       catchError(this.handleError.handleError<{}>('deleteProject'))
     );
   }
+//   search(term: string): Observable<Project[]> {
+//     console.log(term + ' away');
+//     return this.http
+//         .get(`${this.projectsUrl}/?tarefa=${term}`).subscribe(map((res: Response) => res.json().data as Project[]))
+//         .map((res: Response) => res.json().data as Project[]);
+
+// }
 }

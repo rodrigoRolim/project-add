@@ -12,7 +12,10 @@ import {
   MatNativeDateModule,
   MatSelectModule,
   MatListModule,
-  MatTableModule
+  MatTableModule,
+  MatStepperModule,
+  MatExpansionModule,
+  MatCardModule
 } from '@angular/material';
 @NgModule({
   imports: [
@@ -28,7 +31,10 @@ import {
     MatNativeDateModule,
     MatSelectModule,
     MatListModule,
-    MatTableModule
+    MatTableModule,
+    MatStepperModule,
+    MatExpansionModule,
+    MatCardModule
   ],
   exports: [
     BrowserAnimationsModule,
@@ -42,7 +48,10 @@ import {
     MatNativeDateModule,
     MatSelectModule,
     MatListModule,
-    MatTableModule
+    MatTableModule,
+    MatStepperModule,
+    MatExpansionModule,
+    MatCardModule
   ],
   declarations: []
 })

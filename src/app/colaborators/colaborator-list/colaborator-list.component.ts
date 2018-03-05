@@ -19,4 +19,9 @@ export class ColaboratorListComponent implements OnInit {
   collaboratorsInit(): void {
     this.colaboratorService.getColaborators().subscribe((cs) => this.colaborators = cs);
   }
+  delete(colaborator: Colaborator): void {
+    this.colaboratorService.deleteColaborator(colaborator).subscribe(() => this.colaborators = this.colaborators.filter(
+      c => c._id !== colaborator._id
+    ));
+  }
 }

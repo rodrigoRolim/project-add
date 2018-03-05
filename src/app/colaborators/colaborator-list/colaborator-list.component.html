@@ -1,16 +1,21 @@
-<ul>
-  <li *ngFor="let colaborator of colaborators">
-    <ul>
-      <li>{{ colaborator._id }}</li>
-      <li>{{ colaborator.name }}</li>
-      <li>{{ colaborator.email }}</li>
-      <li>{{ colaborator.phone }}</li>
-      <li>{{ colaborator.birth }}</li>
-      <li>{{ colaborator.workload }}</li>
-      <li>{{ colaborator.scholarity }}</li>
-    </ul>
-  </li>
-</ul>
-<div class="container">
-  
+<div class="container" fxLayout="row" fxLayoutWrap fxLayoutAlign="space-evenly start"
+[style.padding.px]="50">
+    <mat-card *ngFor="let colaborator of colaborators" [style.max-width.px]="400" [style.margin.px]="5">
+        <mat-card-header>
+          <div mat-card-avatar class="header-image"></div>
+          <mat-card-title>{{ colaborator.name }}</mat-card-title>
+          <mat-card-subtitle>{{ colaborator.email }}</mat-card-subtitle>
+        </mat-card-header>
+        <img mat-card-image src="../assets/img/Steve_Pizza.png" alt="Photo of a Shiba Inu">
+        <mat-card-content>
+          <p><span>phone: </span>{{ colaborator.phone }}</p>
+          <p><span>Data de nascimento: </span> {{ colaborator.birth }}</p>
+          <p><span>carga horária: </span>{{ colaborator.workload }}</p>
+          <p><span>Escolaridade: </span>{{ colaborator.scholarity }}</p>
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-button (click)="delete(colaborator)">EXCLUIR</button>
+          <button mat-button>EDITAR</button>
+        </mat-card-actions>
+    </mat-card>      
 </div>

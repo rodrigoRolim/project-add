@@ -1,14 +1,27 @@
-<!-- <ul>
-  <li *ngFor="let project of projects; index as i">
-    <ul>
-      <li>{{ project.teans[i].member }}</li>
-      <li>{{ project.teans[i].timeSpend }}</li>
-      <li>{{ project.name }}</li>
-      <li>{{ project._id }}</li>
-      <li>{{ project.boss }}</li>
-      <li>{{ project.start }}</li>
-      <li>{{ project.finish}}</li>
-      <li>{{ project.description }}</li>
-    </ul>
-  </li>
-</ul> -->
+<mat-accordion fxFlex="80">
+  <mat-expansion-panel *ngFor="let project of projects">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        {{ project.name }}
+      </mat-panel-title>
+      <mat-panel-description>
+        {{ project.description }}
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <mat-list>
+      <h3>Equipe</h3>
+      <mat-list-item *ngFor="let team of project.teams">
+        <p fxFlexLayout="column" fxFlex="100">
+          <span fxFlexAling="start">{{ team.member }}: </span>
+          <span fxFlexAlgin="end">{{ team.timeSpend }} horas</span>
+        </p>
+      </mat-list-item>
+      <mat-divider></mat-divider>
+      <mat-list-item fxFlexLayout="column">
+        <p mat-line><span>Lider: </span>{{ project.boss }}</p>
+        <p mat-line><span>Data de início: </span>{{ project.start }}</p>
+        <p mat-line><span>Date de término: </span>{{ project.end }}</p>
+      </mat-list-item>
+    </mat-list>
+  </mat-expansion-panel>
+</mat-accordion>

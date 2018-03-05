@@ -45,12 +45,12 @@ export class ColaboratorService {
       catchError(this.handleError.handleError<Colaborator>('addColaborator'))
     );
   }
-  deleteColaborator(colaborator: Colaborator): Observable<{}> {
+  deleteColaborator(colaborator: Colaborator): Observable<Colaborator> {
     const url = `${this.colaboratorsUrl}/${colaborator._id}`;
     return this.http.delete(url, httpOptions)
     .pipe(
       retry(3),
-      catchError(this.handleError.handleError<{}>('deleteColaborator'))
+      catchError(this.handleError.handleError<Colaborator>('deleteColaborator'))
     );
   }
   updateColaborator(colaborator: Colaborator): Observable<Colaborator> {
